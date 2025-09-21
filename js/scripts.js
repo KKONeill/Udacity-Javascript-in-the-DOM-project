@@ -1,3 +1,15 @@
+(async () => {
+    try { 
+        const [aboutResult, projectsResult] = await Promise.all([
+            getAboutData(),
+            getProjectsData(),
+        ]);
+    createAboutMeContainer(aboutResult);
+    createProjectsContainer(projectsResult);
+}   catch (err) {
+    console.error("Failed: ", err);
+}
+})();
 
 async function getAboutData() {
     const url = "./data/aboutMeData.json";
@@ -106,7 +118,7 @@ const createProjectsContainer = (projectsData) => {
     }
 };
 
-document.addEventListener("DOMContentLoaded", async () => {
+/*document.addEventListener("DOMContentLoaded", async () => {
     const aboutData = await getAboutData();
     if (aboutData) {
         createAboutMeContainer(aboutData);
@@ -116,4 +128,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (projectsData && projectsData.length > 0) {
         createProjectsContainer(projectsData);
     }
-});
+});*/ 
+
